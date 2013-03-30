@@ -1,0 +1,55 @@
+package organism.responding.operant;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import organism.stimulation.Stimulus;
+
+/**
+ * Provides a mechanism to check whether a stimulus is capable of
+ * discriminating an operant.
+ * 
+ * @author Paulo Salem
+ *
+ */
+public class Discrimination {
+  
+  
+  public boolean discriminates(Stimulus s, Operant o){
+    
+    HashSet<Stimulus> ss = new HashSet<Stimulus>();
+    ss.add(s);
+    
+    if(discriminates(ss, o)){
+      return true;
+    }
+    
+    // No discrimination was found
+    return false;
+  }
+  
+  
+  public boolean discriminates(Set<Stimulus> ss, Operant o){
+
+    // The specified set must be equal to some antecedent in
+    // order to discriminate the operant
+    for(Set<Stimulus> antecedent: o.getAntecedents()){
+      
+      // Check if the two sets are identical
+      if(antecedent.size() == ss.size()
+          && antecedent.containsAll(ss)){
+        
+        return true;
+      }
+    }
+    
+    /*
+    for(Stimulus s: ss){
+      if(discriminates(s, o)){
+        return true;
+      }
+    }*/
+    
+    return false;
+  }
+}

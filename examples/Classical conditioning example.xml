@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<organism>
+    
+  <stimulation-subsystem>
+
+    <stimulation-parameters>
+      <stimulation-hints>
+        <pleasure-hints>
+          <stimulus id="0" />
+        </pleasure-hints>
+        <pain-hints>
+          <stimulus id="4" />
+        </pain-hints>
+      </stimulation-hints>
+
+      <stimuli>
+        <stimulus id="0" name="Food" primary="true" utility="0.9" />
+        <stimulus id="1" name="Bell" />
+        <stimulus id="2" name="Whistle" />
+        <stimulus id="3" name="Injection" primary="true" utility="-0.6" />
+        <stimulus id="4" name="Veterinary" primary="false" />
+        <stimulus id="5" name="Neutral" primary="true" utility="0.0" />
+      </stimuli>
+
+      <max-delay value="10" />
+
+    </stimulation-parameters>
+
+    <conditioning-parameters>
+        <c value="0.5"/>
+    </conditioning-parameters>
+    
+    <stimulus-implication>
+            
+    </stimulus-implication>
+  </stimulation-subsystem>
+  
+  
+  <responding-subsystem>
+    
+    <actions>
+      <action id="0" name="Salivate" base-level="0.0001" operant="false" reflex="true" />
+    </actions>
+    
+    <action-conflict />
+    
+    <operants>
+    </operants>
+    
+    
+    <reflexes>
+      <reflex>
+        <reflex-parameters>
+          <max-elicitation value="1.0" />
+          <min-elicitation value="0.9" />
+          <max-strength value="1.0" />
+          <min-strength value="0.5" />
+          <max-duration value="10" />
+          <min-duration value="2" />
+          <max-latency value="10" />
+          <min-latency value="1" />
+          <max-threshold value="0.1" />
+          <min-threshold value="0.3" />
+        </reflex-parameters>
+        <antecedent-stimulus id="0" />
+        <action id="0" />
+        <threshold value="0.3" />
+        <elicitation value="1.0" />
+        <strength value="1.0" />
+        <duration value="10" />
+        <latency value="1" />
+      </reflex>
+    </reflexes>
+
+  </responding-subsystem>
+  
+  <drive-subsystem>
+    <drives>
+      <drive>
+        <importance>0.0</importance>
+        <desires>
+          <stimulus id="0" />
+        </desires>
+      </drive>
+
+    </drives>
+  </drive-subsystem>
+
+  <emotion-subsystem>
+    <anger status="INACTIVE" intensity="0.0" duration="0" />
+    <depression status="INACTIVE" intensity="0.0" duration="0" />
+    <frustration status="INACTIVE" intensity="0.0" duration="0" />
+  </emotion-subsystem>
+
+</organism>
+
+

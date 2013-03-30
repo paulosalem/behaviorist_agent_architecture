@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/salem/!svn/ver/67/behavior-simulator/src/organism/responding/operant
+END
+OperantImplication.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/salem/!svn/ver/21/behavior-simulator/src/organism/responding/operant/OperantImplication.java
+END
+OperantOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/salem/!svn/ver/21/behavior-simulator/src/organism/responding/operant/OperantOp.java
+END
+Operant.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/salem/!svn/ver/57/behavior-simulator/src/organism/responding/operant/Operant.java
+END
+OperantUtility_Ref1.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/OperantUtility_Ref1.java
+END
+NeutralOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/NeutralOp.java
+END
+NeutralReinforcementOp_1.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/salem/!svn/ver/64/behavior-simulator/src/organism/responding/operant/NeutralReinforcementOp_1.java
+END
+NeutralReinforcementOp_2.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/salem/!svn/ver/64/behavior-simulator/src/organism/responding/operant/NeutralReinforcementOp_2.java
+END
+DiscriminationOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/salem/!svn/ver/48/behavior-simulator/src/organism/responding/operant/DiscriminationOp.java
+END
+Discrimination.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/salem/!svn/ver/48/behavior-simulator/src/organism/responding/operant/Discrimination.java
+END
+OperantConditioningOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/OperantConditioningOp.java
+END
+PositivePunishment.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/PositivePunishment.java
+END
+NegativePunishment.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/NegativePunishment.java
+END
+OperantEliminationOp_1.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/salem/!svn/ver/21/behavior-simulator/src/organism/responding/operant/OperantEliminationOp_1.java
+END
+OperantEliminationOp_2.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/salem/!svn/ver/21/behavior-simulator/src/organism/responding/operant/OperantEliminationOp_2.java
+END
+NegativeReinforcement.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/NegativeReinforcement.java
+END
+ExtinctionOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/salem/!svn/ver/48/behavior-simulator/src/organism/responding/operant/ExtinctionOp.java
+END
+PositiveReinforcement.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/PositiveReinforcement.java
+END
+OperantEmissionCond.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/salem/!svn/ver/48/behavior-simulator/src/organism/responding/operant/OperantEmissionCond.java
+END
+OperantFormationOp.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/salem/!svn/ver/64/behavior-simulator/src/organism/responding/operant/OperantFormationOp.java
+END
+OperantSubsystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/salem/!svn/ver/67/behavior-simulator/src/organism/responding/operant/OperantSubsystem.java
+END
+OperantUtility.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/salem/!svn/ver/1/behavior-simulator/src/organism/responding/operant/OperantUtility.java
+END

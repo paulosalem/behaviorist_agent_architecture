@@ -1,0 +1,32 @@
+package organism.responding.respondent;
+
+import organism.general.Intensity;
+import organism.stimulation.Stimulus;
+import organism.stimulation.StimulusImplication;
+import organism.util.Condition;
+
+/**
+ * A condition that is true if the specified stimulus elicits the
+ * specified reflex.
+ * 
+ * @author Paulo Salem
+ *
+ */
+public class ReflexElicitationCond extends Condition {
+  
+  protected StimulusImplication stimulusImplication;
+  
+  public ReflexElicitationCond(StimulusImplication stimulusImplication){
+    super();
+    this.stimulusImplication = stimulusImplication;
+  }
+
+  public boolean check(Reflex r, Stimulus s, Intensity i){
+    
+    if(stimulusImplication.causes(s, r.getAntecedent()) && r.getThreshold().lessThanOrEqualTo(i)){
+      return true;
+    }
+    
+    return false;
+  }
+}

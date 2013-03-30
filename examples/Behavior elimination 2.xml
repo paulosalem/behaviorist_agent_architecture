@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  
+
+  Behavior elimination
+  
+  Scenario:
+  A problem child is pleased when she hurts her dog.
+  
+  Objective:
+  Change the child's behavior in order to make sure she will
+  caress the dog instead of beating it.
+
+ -->
+
+<organism>
+    
+  <stimulation-subsystem>
+
+    <stimulation-parameters>
+      <stimulation-hints>
+        <pleasure-hints>
+          <stimulus id="5" />
+        </pleasure-hints>
+        <pain-hints>
+          <stimulus id="3" />
+          <stimulus id="4" />
+        </pain-hints>
+      </stimulation-hints>
+
+      <stimuli>
+        <stimulus id="0" name="Praise" primary="true" utility="0.5" />
+        <stimulus id="1" name="Candy" primary="true" utility="0.6" />
+        <stimulus id="2" name="Child is beaten" primary="true" utility="-0.6" />
+        <stimulus id="3" name="Dog screams" primary="true" utility="0.2"/>
+        <stimulus id="4" name="Dog cries" primary="true" utility="0.2" />
+        <stimulus id="5" name="Dog wags tail"/>
+      </stimuli>
+
+      <max-delay value="10" />
+
+    </stimulation-parameters>
+
+    <conditioning-parameters>
+        <c value="0.5"/>
+    </conditioning-parameters>
+    
+    <stimulus-implication>
+            
+    </stimulus-implication>
+  </stimulation-subsystem>
+  
+  
+  <responding-subsystem>
+    
+    <actions>
+      <action id="0" name="Beat dog" base-level="0.01" operant="true" reflex="true" />
+      <action id="1" name="Caress dog" base-level="0.01" operant="true" reflex="true" />
+      <action id="2" name="Play with dog" base-level="0.01" operant="true" reflex="true" />
+    </actions>
+    
+    
+    <action-conflict>
+      <conflic id1="0" id2="1"/>
+      <conflic id1="0" id2="2"/>
+      <conflic id1="1" id2="2"/>
+    </action-conflict>
+    
+    <operants>
+    </operants>
+    
+    
+    <reflexes>
+ 
+    </reflexes>
+
+  </responding-subsystem>
+  
+  <drive-subsystem>
+    <drives>
+      
+
+    </drives>
+  </drive-subsystem>
+
+  <emotion-subsystem>
+    <anger status="INACTIVE" intensity="0.0" duration="0" />
+    <depression status="INACTIVE" intensity="0.0" duration="0" />
+    <frustration status="INACTIVE" intensity="0.0" duration="0" />
+  </emotion-subsystem>
+
+</organism>
+
+
+

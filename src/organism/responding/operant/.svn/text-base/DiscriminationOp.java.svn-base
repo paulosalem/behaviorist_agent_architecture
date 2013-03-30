@@ -1,0 +1,43 @@
+package organism.responding.operant;
+
+import java.util.Set;
+
+import organism.emotion.EmotionSubsystem;
+import organism.general.Correlation;
+import organism.general.Magnitude;
+import organism.responding.Action;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+
+public class DiscriminationOp extends OperantOp {
+  
+  public DiscriminationOp(OperantUtility operantUtility, StimulationSubsystem stimSubsys){
+    super(operantUtility, stimSubsys);
+  }
+  
+  public boolean precondition(Operant operant, Action action, Stimulus consequence, Set<Stimulus> discriminativeStimuli, int delay){
+    
+    if(super.precondition(operant, action, delay)){
+      if(!operant.getAntecedents().contains(discriminativeStimuli)
+          && this.stimSubsys.getStimulusImplication().causes(consequence, operant.getConsequence())
+          && !discriminativeStimuli.contains(consequence)){
+       
+        return true;
+      }
+    }
+    
+    return false;
+  }
+  
+  public void apply(Operant operant, EmotionSubsystem emoSubsys, Set<Stimulus> discriminativeStimuli, Stimulus consequence, Action action, int delay){
+    operant.getAntecedents().add(discriminativeStimuli);
+    
+    // A correlation higher than the minimum
+    Correlation c = new Correlation(Correlation.MIN);
+    c = Correlation.valueOf(c.add(new Correlation(0.9)));
+
+    // Create a new contingency
+    operant.getConsequenceContingency().put(discriminativeStimuli, c);
+  }
+
+}

@@ -1,0 +1,40 @@
+package organism.responding.operant;
+
+import java.util.Set;
+
+import organism.emotion.EmotionSubsystem;
+import organism.general.Correlation;
+import organism.responding.Action;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+
+public class OperantConditioningOp extends OperantOp {
+
+  public OperantConditioningOp(OperantUtility operantUtility, StimulationSubsystem stimSubsys){
+    super(operantUtility, stimSubsys);
+  }
+  
+  public boolean precondition(Operant operant, Action action, Stimulus consequence, Set<Stimulus> discriminativeStimuli, int delay){
+    
+    if(super.precondition(operant, action, delay)){
+      
+      if(operant.getAntecedents().contains(discriminativeStimuli)
+          && this.stimSubsys.getStimulusImplication().causes(consequence, operant.getConsequence())){
+       
+        return true;
+      }
+    }
+    
+    return false;
+  }
+  
+  public void apply(Operant operant, EmotionSubsystem emoSubsys, Set<Stimulus> discriminativeStimuli, Stimulus consequence, Action action, int delay){
+    Correlation c = operant.getConsequenceContingency().get(discriminativeStimuli);
+    
+    c = Correlation.valueOf(c.add(new Correlation(0.1)));
+    
+    operant.getConsequenceContingency().put(discriminativeStimuli, c);
+  }
+
+
+}

@@ -1,0 +1,30 @@
+package organism.responding.operant;
+
+import java.util.Set;
+
+import organism.util.Operation;
+
+public class OperantEliminationOp_2 extends Operation {
+	
+	
+	public OperantEliminationOp_2() {
+		super();
+		
+	}
+
+
+	public boolean precondition(Operant o){
+		
+		if(o.canBeDiscriminated()){
+			return true; // should not be eliminated
+		}
+		
+		return false;
+	}
+	
+	
+	public void apply(Operant o){
+		// does not eliminate the operant
+		
+	}
+}

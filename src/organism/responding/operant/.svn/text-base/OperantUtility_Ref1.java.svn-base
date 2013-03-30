@@ -1,0 +1,49 @@
+package organism.responding.operant;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import organism.stimulation.Stimulus;
+import organism.stimulation.StimulusUtility;
+import organism.stimulation.Utility;
+
+
+public class OperantUtility_Ref1 extends OperantUtility {
+
+  protected Discrimination discrimination;
+  
+  public OperantUtility_Ref1(StimulusUtility stimulusUtility, OperantImplication operantImplication, Discrimination discrimination){
+    super(stimulusUtility, operantImplication);
+    this.discrimination = discrimination;
+  }
+
+  
+  public Utility utility(Operant o, Set<Stimulus> ss){
+    
+    Set<Stimulus> reachable = new HashSet<Stimulus>();
+    
+    // Find all reachable stimuli
+    if(discrimination.discriminates(ss, o)){
+      reachable = operantImplication.consequences(o);
+    }
+
+    
+    //
+    // Find the best among the reachable
+    //
+    
+    // Begin with a neutral utility
+    Utility best = new Utility(Utility.NEUTRAL);
+
+    for(Stimulus s: reachable){
+      Utility u = stimulusUtility.utility(s);
+      if(u.greaterThan(best)){
+        best = u; 
+      }
+    }
+    
+    return best;
+    
+  }
+
+}

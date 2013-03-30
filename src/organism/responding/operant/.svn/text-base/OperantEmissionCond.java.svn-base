@@ -1,0 +1,54 @@
+package organism.responding.operant;
+
+import organism.responding.RespondingSubsystem;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Utility;
+import organism.util.Condition;
+
+/**
+ * A condition that is true when an operant may be emitted.
+ * 
+ * @author Paulo Salem
+ */
+public class OperantEmissionCond extends Condition {
+
+  protected RespondingSubsystem respSubsys;
+  
+  protected StimulationSubsystem stimSubsys;
+  
+  protected OperantUtility operantUtility;
+  
+  protected Discrimination discrimination = new Discrimination();
+   
+  
+  public OperantEmissionCond(RespondingSubsystem respSubsys, StimulationSubsystem stimSubsys, OperantUtility operantUtility){
+    super();
+    this.respSubsys = respSubsys;
+    this.stimSubsys = stimSubsys;
+    this.operantUtility = operantUtility;
+  }
+
+  public boolean check(Operant o){
+
+    // Check whether it is discriminated.
+    if(!discrimination.discriminates(stimSubsys.getCurrentStimuli(), o)){
+      return false;
+    }
+    
+    
+    // Check whether it is the best possible operant
+    Utility u = operantUtility.utility(o, stimSubsys.getCurrentStimuli());
+    
+    for(Operant p: respSubsys.getOperants()){
+      if(operantUtility.utility(p, stimSubsys.getCurrentStimuli()).greaterThan(u)){
+        
+        // Well, we found another operant that has superior utility.
+        // Therefore, the specified operant should not be emitted
+        return false;
+      }
+    }
+    
+    // Since no superior operant was found, the specified one may be emitted
+    return true;
+  }
+}

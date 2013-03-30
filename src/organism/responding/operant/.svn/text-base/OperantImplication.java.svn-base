@@ -1,0 +1,109 @@
+package organism.responding.operant;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
+
+import organism.general.Correlation;
+import organism.responding.RespondingSubsystem;
+import organism.stimulation.Stimulus;
+import organism.stimulation.StimulusImplication;
+
+/**
+ * Provides the mechanism to calculate the operant implication relation.
+ * 
+ * @author Paulo Salem
+ * 
+ */
+public class OperantImplication {
+  
+  protected StimulusImplication stimulusImplication;
+  
+  protected Discrimination discrimination;
+  
+  protected Set<Operant> operants;
+  
+  public OperantImplication(Set<Operant> operants, StimulusImplication stimulusImplication, Discrimination discrimination){
+    this.operants = operants;
+    this.stimulusImplication = stimulusImplication;
+    this.discrimination = discrimination;
+  }
+  
+  public boolean causes(Operant o, Stimulus s){
+    
+    Stack<Operant> os = new Stack<Operant>();
+    os.add(o);
+    
+    while(!os.empty()){
+      Operant cur = os.pop();
+      
+      // Calculate all stimuli associated with the operant's consequence
+      Set<Stimulus> consequences = stimulusImplication.consequences(cur.getConsequence());
+      consequences.add(cur.getConsequence());
+      
+      // Check whether one of these stimuli is the desired one
+      for(Stimulus t: consequences){
+        if(t.equals(s)){
+          return true;
+        }
+      }
+      
+      // Check if these stimuli discriminate other operants from the organism
+      for(Operant p: operants){
+        for(Stimulus t: consequences){
+          if(discrimination.discriminates(t, p)){
+            os.add(p);
+            break;
+          }
+        }
+      }
+    }
+    
+    // If nothing was found, there is no causation
+    return false;
+  }
+  
+  
+  public Correlation correlation(Operant o, Stimulus s){
+    // TODO <-------------------------------------------------------------
+    return null;
+  }
+  
+  public Set<Stimulus> consequences(Operant o){
+    
+    Set<Stimulus> consequences = new HashSet<Stimulus>();
+    
+    Stack<Operant> os = new Stack<Operant>();
+    Set<Operant> visited = new HashSet<Operant>();
+    
+    os.add(o);
+    visited.add(o);
+    
+    while(!os.empty()){
+      Operant cur = os.pop();
+      
+      // All stimuli associated with the operant's consequence
+      consequences.addAll(stimulusImplication.consequences(cur.getConsequence()));
+      consequences.add(cur.getConsequence());
+      
+      
+      // Check if these stimuli discriminate other operants from the organism
+      for(Operant p: operants){
+        for(Stimulus t: consequences){
+          if(discrimination.discriminates(t, p)){
+        	  
+        	  // If it has not been examined, now is the time
+        	  if(!visited.contains(p)){
+        		  os.add(p);
+        		  visited.add(p);
+        		  break;
+        	  }
+          }
+        }
+      }
+    }
+    
+    return consequences;
+  }
+  
+}

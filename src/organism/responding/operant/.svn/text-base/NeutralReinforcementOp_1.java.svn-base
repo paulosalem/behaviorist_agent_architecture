@@ -1,0 +1,36 @@
+package organism.responding.operant;
+
+import organism.responding.Action;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+import organism.stimulation.Utility;
+import organism.util.Operation;
+
+public class NeutralReinforcementOp_1 extends Operation {
+  
+  /**
+   * Stimulation subsystem.
+   */
+  protected StimulationSubsystem stimSubsys;
+  
+  
+  public NeutralReinforcementOp_1(StimulationSubsystem stimSubsys){
+    this.stimSubsys = stimSubsys;
+  }
+  
+  public boolean precondition(Operant operant, Stimulus consequence, Action action, int delay){
+    
+    if(stimSubsys.getStimulusUtility().utility(consequence).equals(Utility.NEUTRAL)
+        || delay > stimSubsys.getMaxDelay()
+        || !action.equals(operant.getAction())){
+      
+      return true;
+    }
+    
+    return false;
+  }
+  
+  public void apply(){
+    // Nothing
+  }
+}

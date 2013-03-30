@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<organism>
+    
+  <stimulation-subsystem>
+
+    <stimulation-parameters>
+      <stimulation-hints>
+        <pleasure-hints>
+          <stimulus id="0" />
+        </pleasure-hints>
+        <pain-hints>
+          <stimulus id="1" />
+        </pain-hints>
+      </stimulation-hints>
+
+      <stimuli>
+        <stimulus id="0" name="Praise" primary="true" utility="0.4" />
+        <stimulus id="1" name="Reproach" primary="true" utility="-0.4"/>
+        <stimulus id="2" name="Neutral" primary="false"/>
+      </stimuli>
+
+      <max-delay value="10" />
+
+    </stimulation-parameters>
+
+    <conditioning-parameters>
+        <c value="0.5"/>
+    </conditioning-parameters>
+    
+    <stimulus-implication>
+            
+    </stimulus-implication>
+  </stimulation-subsystem>
+  
+  
+  <responding-subsystem>
+    
+    <actions>
+      <action id="0" name="Wound self-infliction" base-level="0.01" operant="true" reflex="true" />
+      <action id="1" name="Paint" base-level="0.1" operant="true" reflex="false" />
+    </actions>
+    
+    <action-conflict>
+        <conflict id1="0" id2="1"/>
+    </action-conflict>
+    
+    <operants>
+    </operants>
+    
+    
+    <reflexes>
+
+    </reflexes>
+
+  </responding-subsystem>
+  
+  <drive-subsystem>
+    <drives>
+
+    </drives>
+  </drive-subsystem>
+
+  <emotion-subsystem>
+    <anger status="INACTIVE" intensity="0.0" duration="0" />
+    <depression status="INACTIVE" intensity="0.0" duration="0" />
+    <frustration status="INACTIVE" intensity="0.0" duration="0" />
+  </emotion-subsystem>
+
+</organism>
+
+

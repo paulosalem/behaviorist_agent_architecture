@@ -1,0 +1,43 @@
+package organism.responding.operant;
+
+import java.util.Set;
+
+import organism.stimulation.Stimulus;
+import organism.stimulation.StimulusUtility;
+import organism.stimulation.Utility;
+
+/**
+ * Defines the utility of operants.
+ * 
+ * @author Paulo Salem
+ *
+ */
+public abstract class OperantUtility {
+
+  /**
+   * Stimulus utility definition.
+   */
+  protected StimulusUtility stimulusUtility;
+  
+  /**
+   * Operant implication definition.
+   */
+  protected OperantImplication operantImplication;
+  
+  
+  public OperantUtility(StimulusUtility stimulusUtility, OperantImplication operantImplication){
+    this.stimulusUtility = stimulusUtility;
+    this.operantImplication = operantImplication;
+  }
+  
+  /**
+   * Calculates the utility of the specified operant considering
+   * the specifed stimuli.
+   * 
+   * @param o The operant whose utility is desired.
+   * @param ss The stimuli that the organism is currently receiving.
+   * 
+   * @return The current utility of the operant.
+   */
+  public abstract Utility utility(Operant o, Set<Stimulus> ss);
+}

@@ -1,0 +1,35 @@
+package organism.responding.operant;
+
+import organism.stimulation.Stimulation;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+import organism.stimulation.Utility;
+import organism.util.Operation;
+
+public class NegativeReinforcement extends Operation {
+
+  /**
+   * Stimulation subsystem.
+   */
+  protected StimulationSubsystem stimSubsys;
+  
+  
+  public NegativeReinforcement(StimulationSubsystem stimSubsys){
+    this.stimSubsys = stimSubsys;
+  }
+  
+  public boolean precondition(Stimulus consequence){
+    
+    if(stimSubsys.getStimulusUtility().utility(consequence).lessThan(Utility.NEUTRAL)
+        && stimSubsys.getStimulusStatus().get(consequence).equals(Stimulation.StimulusStatus.ENDING)){
+      
+      return true;
+    }
+    
+    return false;
+  }
+  
+  public void apply(){
+    // Nothing
+  }
+}

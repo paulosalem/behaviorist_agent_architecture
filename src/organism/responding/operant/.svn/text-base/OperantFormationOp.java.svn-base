@@ -1,0 +1,60 @@
+package organism.responding.operant;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import organism.general.Correlation;
+import organism.responding.Action;
+import organism.responding.ActionManager;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+import organism.stimulation.StimulusManager;
+import organism.util.Operation;
+
+public class OperantFormationOp extends Operation {
+
+  /**
+   * Stimulation subsystem.
+   */
+  protected StimulationSubsystem stimSubsys;
+  
+  protected StimulusManager stimulusManager;
+  
+  protected ActionManager actionManager;
+  
+  public OperantFormationOp(StimulationSubsystem stimSubsys, ActionManager actionManager){
+    this.stimSubsys = stimSubsys;
+    this.actionManager = actionManager;
+    this.stimulusManager = stimSubsys.getStimulusManager();
+    
+  }
+  
+  public boolean precondition(Stimulus consequence, Set<Stimulus> discriminative, int delay){
+    int maxDelay = stimSubsys.getMaxDelay();
+    
+    if(delay <= maxDelay 
+        && !discriminative.contains(consequence)
+        && !discriminative.isEmpty()){
+      return true;
+    }
+    
+    return false;
+  }
+  
+  public Operant apply(Action action, Stimulus consequence, Set<Stimulus> discriminative, int delay){
+    
+    Set<Set<Stimulus>> antecedents = new HashSet<Set<Stimulus>>();
+    
+    // Antecedents starts as the discriminative stimuli
+    antecedents.add(discriminative);
+    
+    // TODO set better value
+    Map<Set<Stimulus>, Correlation> consequenceContingency = new HashMap<Set<Stimulus>, Correlation>();
+    consequenceContingency.put(discriminative, new Correlation(0.3)); 
+    
+    return new Operant(antecedents, action, consequence, consequenceContingency, actionManager, stimulusManager);
+  }
+  
+}

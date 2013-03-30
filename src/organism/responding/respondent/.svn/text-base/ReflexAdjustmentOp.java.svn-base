@@ -1,0 +1,40 @@
+package organism.responding.respondent;
+
+import organism.general.Intensity;
+import organism.responding.RespondingSubsystem;
+import organism.responding.Response;
+import organism.responding.operant.Operant;
+import organism.util.Operation;
+
+public class ReflexAdjustmentOp extends Operation {
+
+  /**
+   * Checks the preconditions for the operation.
+   * 
+   * @param r The reflex being adjusted
+   * @param instant1 The first instant.
+   * @param instant2 The second instant.
+   * 
+   * @return <code>true</code> if the operation's preconditions are true;
+   *         <code>false</code> otherwise.
+   */
+  public boolean precondition(Reflex r, int instant1, int instant2){
+    // none   
+    return true;
+  }
+  
+  /**
+   * Applies the operation.
+   * 
+   * @param r The reflex being adjusted
+   * @param instant1 The first instant.
+   * @param instant2 The second instant.
+   */
+  public void apply(Reflex r, int instant1, int instant2){
+    
+    r.setElicitation(r.getParameters().deltaElicitation(r.getElicitation(), instant1, instant2));
+    r.setStrength(r.getParameters().deltaStrength(r.getStrength(), instant1, instant2));
+    r.setDuration(r.getParameters().deltaDuration(r.getDuration(), instant1, instant2));
+    r.setLatency(r.getParameters().deltaLatency(r.getLatency(), instant1, instant2));
+  }
+}

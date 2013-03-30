@@ -1,0 +1,51 @@
+package organism.responding.operant;
+
+import java.util.Set;
+
+import organism.emotion.EmotionSubsystem;
+import organism.responding.Action;
+import organism.stimulation.StimulationSubsystem;
+import organism.stimulation.Stimulus;
+import organism.util.Operation;
+
+/**
+ * Abstract operant operation. Used to change existing operants.
+ * 
+ * @author Paulo Salem
+ *
+ */
+public abstract class OperantOp extends Operation {
+
+
+	
+  /**
+   * Operant utility definition.
+   */
+  protected OperantUtility operantUtility;
+  
+  
+  /**
+   * Stimulation subsystem, used to get the maxDelay constant.
+   */
+  protected StimulationSubsystem stimSubsys;
+  
+  public OperantOp(OperantUtility operantUtility, StimulationSubsystem stimSubsys){
+    this.operantUtility = operantUtility;
+    this.stimSubsys = stimSubsys;
+  }
+  
+  public boolean precondition(Operant operant, Action action, int delay){
+    
+    int maxDelay = stimSubsys.getMaxDelay();
+    
+    if(operant.getAction().equals(action) 
+        && delay <= maxDelay){
+      return true;
+    }
+    
+    
+    return false;
+  }
+  
+  public abstract void apply(Operant operant, EmotionSubsystem emoSubsys, Set<Stimulus> discriminativeStimuli, Stimulus consequence, Action action, int delay);
+}
